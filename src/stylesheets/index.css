@@ -16,3 +16,12 @@
 .hide {
   display: none;
 }
+.menu li {
+  display: inline-block;
+}
+.Footer .svg-inline--fa {
+  color: red;
+}
+.github .svg-inline--fa {
+  color: #333;
+}
