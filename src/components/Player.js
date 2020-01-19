@@ -43,7 +43,7 @@ class Player extends Component {
       playerClassName += " opacity1";
     }
 
-    const embedUrl = `//www.youtube.com/embed/${this.props.play}?rel=0&autoplay=1`;
+    const embedUrl = `//www.youtube.com/embed/${this.props.play}`;
 
     return (
       <div className="Player" id="Player">
