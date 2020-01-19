@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Song from "./Song";
+import Pagination from "./Pagination";
 
 class Songs extends Component {
   render() {
@@ -11,8 +12,14 @@ class Songs extends Component {
       return <Song song={song} key={key} />;
     });
     return (
-      <div className="Songs" id="Songs">
-        {songs}
+      <div>
+        <div className="Songs" id="Songs">
+          {songs}
+        </div>
+        <div>
+          <Pagination />
+          <br />
+        </div>
       </div>
     );
   }

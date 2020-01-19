@@ -8,7 +8,7 @@ const instance = axios.create({
 instance.interceptors.request.use(config => {
   config.params = {
     part: "snippet",
-    maxResults: 20,
+    maxResults: 10,
     key: M3TUBE_KEY,
     ...config.params
   };

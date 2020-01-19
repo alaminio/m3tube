@@ -19,8 +19,8 @@ class Header extends Component {
   render() {
     return (
       <div className="Header" id="Header">
-        <div class="columns">
-          <div class="column">
+        <div className="columns">
+          <div className="column">
             <div className="field has-addons">
               <div className="control">
                 <input
@@ -37,17 +37,19 @@ class Header extends Component {
               </div>
             </div>
           </div>
-          <div class="column">
-            <ul class="menu">
+          <div className="column">
+            <ul className="menu">
               <li>m3tube&nbsp;&nbsp;</li>
-              <li class="github">
+              <li className="github">
                 <a
                   target="_blank"
                   href="https://github.com/m3alamin/m3tube"
                   title="View Code On Github"
+                  rel="noopener noreferrer"
                 >
-                  <i class="far fa-eye"></i> <i class="fas fa-code"></i> On
-                  <i class="fab fa-github"></i>
+                  <i className="far fa-eye"></i> <i className="fas fa-code"></i>{" "}
+                  On
+                  <i className="fab fa-github"></i>
                 </a>
               </li>
             </ul>
