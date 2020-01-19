@@ -1,4 +1,4 @@
-import { SEARCH_SONG, UPDATE_QUERY } from "../config/constants";
+import { SEARCH_SONG, UPDATE_QUERY, SHOW_ERROR } from "../config/constants";
 import youtube from "../config/youtube";
 import { changePaination } from "./paginationActions";
 
@@ -22,20 +22,28 @@ export const searchYoutube = (query, pageToken = null) => {
     if (pageToken) {
       searchParams.params.pageToken = pageToken;
     }
-    youtube.get("/search", searchParams).then(response => {
-      dispatch(fetchSongs(response.data.items));
+    youtube
+      .get("/search", searchParams)
+      .then(response => {
+        dispatch(fetchSongs(response.data.items));
 
-      let pagination = {
-        prevPageToken: null,
-        nextPageToken: null
-      };
-      if (response.data.prevPageToken) {
-        pagination.prevPageToken = response.data.prevPageToken;
-      }
-      if (response.data.nextPageToken) {
-        pagination.nextPageToken = response.data.nextPageToken;
-      }
-      dispatch(changePaination(pagination));
-    });
+        let pagination = {
+          prevPageToken: null,
+          nextPageToken: null
+        };
+        if (response.data.prevPageToken) {
+          pagination.prevPageToken = response.data.prevPageToken;
+        }
+        if (response.data.nextPageToken) {
+          pagination.nextPageToken = response.data.nextPageToken;
+        }
+        dispatch(changePaination(pagination));
+      })
+      .catch(error => {
+        dispatch({
+          type: SHOW_ERROR,
+          payload: error.response.data.error.message
+        });
+      });
   };
 };
