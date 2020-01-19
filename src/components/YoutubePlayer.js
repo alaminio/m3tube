@@ -48,11 +48,12 @@ class YoutubePlayer extends Component {
   loadVideo = () => {
     const { id } = this.props;
 
-    this.player = new window.YT.Player(`youtube-player-${id}`, {
+    this.player = new window.YT.Player("m3tube-player", {
       videoId: id,
       events: {
         onReady: this.onPlayerReady
-      }
+      },
+      playerVars: { origin: window.location.href }
     });
   };
 
@@ -61,10 +62,9 @@ class YoutubePlayer extends Component {
   };
 
   render = () => {
-    const { id } = this.props;
     return (
       <div className="">
-        <div id={`youtube-player-${id}`} />
+        <div id="m3tube-player" />
       </div>
     );
   };
