@@ -13,9 +13,24 @@ class Header extends Component {
 
   submit = event => {
     event.preventDefault();
+    this.searchAction();
+  };
+
+  inputKeyDown = event => {
+    if (event.key === "Enter") {
+      this.searchAction();
+    }
+  };
+
+  searchAction = () => {
+    if (this.state.searchQuery.length < 1) {
+      console.error("Nothing to search");
+      return;
+    }
     this.props.searchSong(this.state.searchQuery);
     this.props.searchYoutube(this.state.searchQuery);
   };
+
   render() {
     return (
       <div className="Header" id="Header">
@@ -28,6 +43,7 @@ class Header extends Component {
                   type="text"
                   value={this.state.searchQuery}
                   onChange={this.search}
+                  onKeyDown={this.inputKeyDown}
                 />
               </div>
               <div className="control">

@@ -1,4 +1,9 @@
-import { SEARCH_SONG, UPDATE_QUERY, SHOW_ERROR } from "../config/constants";
+import {
+  SEARCH_SONG,
+  UPDATE_QUERY,
+  SHOW_ERROR,
+  HIDE_ERROR
+} from "../config/constants";
 import youtube from "../config/youtube";
 import { changePaination } from "./paginationActions";
 
@@ -38,11 +43,18 @@ export const searchYoutube = (query, pageToken = null) => {
           pagination.nextPageToken = response.data.nextPageToken;
         }
         dispatch(changePaination(pagination));
+        dispatch({ type: HIDE_ERROR });
       })
       .catch(error => {
+        let errorMessage = "Something went wrong";
+        if (error.response.data.error && error.response.data.error.message) {
+          errorMessage = error.response.data.error.message;
+        } else if (error.response.data) {
+          errorMessage = error.response.data;
+        }
         dispatch({
           type: SHOW_ERROR,
-          payload: error.response.data.error.message
+          payload: errorMessage
         });
       });
   };

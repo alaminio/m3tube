@@ -6,3 +6,4 @@ export const M3TUBE_KEY = "AIzaSyB-CD2qqObMMMCUthOT1bV8bz32XmZ9pmE";
 export const M3TUBE_URL = "https://www.googleapis.com/youtube/v3";
 export const CHANGE_PAGINATION = "CHANGE_PAGINATION";
 export const SHOW_ERROR = "SHOW_ERROR";
+export const HIDE_ERROR = "HIDE_ERROR";

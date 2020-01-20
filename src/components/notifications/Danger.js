@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { HIDE_ERROR } from "../../config/constants";
 
-export default class Danger extends Component {
+class Danger extends Component {
   hideNotification = event => {
     event.preventDefault();
+    this.props.removeErrorMessage();
   };
   render() {
     return (
@@ -13,3 +16,12 @@ export default class Danger extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeErrorMessage: () => {
+      dispatch({ type: HIDE_ERROR });
+    }
+  };
+};
+export default connect(null, mapDispatchToProps)(Danger);
