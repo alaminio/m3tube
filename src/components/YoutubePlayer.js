@@ -15,6 +15,9 @@ class YoutubePlayer extends Component {
   };
 
   getSnapshotBeforeUpdate = (prevProps, prevState) => {
+    if (prevProps.volume !== this.props.volume) {
+      return "changeVolumn";
+    }
     if (prevProps.id !== this.props.id) {
       return "changePlayer";
     }
@@ -22,6 +25,9 @@ class YoutubePlayer extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState, snapshot) => {
+    if (snapshot === "changeVolumn") {
+      this.changeVolumn();
+    }
     if (snapshot === "changePlayer") {
       this.player.loadVideoById(this.props.id);
     }
@@ -57,8 +63,13 @@ class YoutubePlayer extends Component {
     });
   };
 
+  changeVolumn = () => {
+    this.player && this.player.setVolume(parseInt(this.props.volume));
+  };
+
   onPlayerReady = event => {
     event.target.playVideo();
+    this.changeVolumn();
   };
 
   render = () => {

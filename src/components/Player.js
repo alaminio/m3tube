@@ -8,7 +8,8 @@ class Player extends Component {
     stopPlayer: false,
     clearVideo: false,
     playerStatus: "play",
-    muteStatus: "unmute"
+    muteStatus: "unmute",
+    volume: 10
   };
 
   togglePlayer = event => {
@@ -62,6 +63,10 @@ class Player extends Component {
     }
   };
 
+  changeVolumn = event => {
+    this.setState({ volume: event.target.value });
+  };
+
   render() {
     if (!this.props.play || this.state.stopPlayer) {
       return <div>&nbsp;</div>;
@@ -96,6 +101,7 @@ class Player extends Component {
                   id={this.props.play}
                   status={this.state.playerStatus}
                   mute={this.state.muteStatus}
+                  volume={this.state.volume}
                 />
               </div>
             </div>
@@ -134,6 +140,14 @@ class Player extends Component {
             >
               {playStatus}
             </a>
+            <div className="card-footer-item">
+              <input
+                type="range"
+                step="1" min="0" max="100"
+                value={this.state.volume}
+                onChange={this.changeVolumn}
+              />
+            </div>
           </footer>
         </div>
       </div>
