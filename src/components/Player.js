@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { DEFAULT_VOLUME } from "../config/constants";
 import YoutubePlayer from "./YoutubePlayer";
 
 class Player extends Component {
@@ -9,7 +10,7 @@ class Player extends Component {
     clearVideo: false,
     playerStatus: "play",
     muteStatus: "unmute",
-    volume: 10
+    volume: DEFAULT_VOLUME
   };
 
   togglePlayer = event => {
