@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import { connect } from "react-redux";
 import { playVideo } from "../actions/PlaySongActions";
@@ -36,13 +37,20 @@ class Song extends Component {
                   <a
                     href="/"
                     className="level-item"
-                    aria-label="reply"
                     onClick={this.playThisSong}
                   >
                     <span className="icon is-small">
                       <i className="fas fa-play" aria-hidden="true"></i>
                     </span>
                   </a>
+                  <Link
+                    to={`/${this.props.song.id.videoId}`}
+                    className="level-item"
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-eye" aria-hidden="true"></i>
+                    </span>
+                  </Link>
                 </div>
               </nav>
             </div>
