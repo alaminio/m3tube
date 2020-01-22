@@ -1,4 +1,4 @@
-YouTube implemented for me using ReactJs, React Router Dom, Redux, Redux-thunk and YouTube API v3 [https://m3alamin.github.io/m3tube/](https://m3alamin.github.io/m3tube/).
+YouTube implemented for me using ReactJs, React Router Dom, Redux, Redux-thunk and YouTube API v3 [https://m3tube.firebaseapp.com/](https://m3tube.firebaseapp.com/).
 
 ![Screenshot](screenshot.png)
 
