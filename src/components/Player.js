@@ -16,6 +16,7 @@ import {
   unMuteVideo,
   setVolume
 } from "../helpers";
+import "../styles/responsiveIframe.css";
 
 class Player extends Component {
   state = { hidePlayer: false, clearView: false, playInBackGround: false };
@@ -186,7 +187,7 @@ class Player extends Component {
             </a>
           </header>
           <div className="card-content">
-            <div className={playerClass}>
+            <div className={`video-container ${playerClass}`}>
               <div id="m3tube-player"></div>
             </div>
           </div>
@@ -245,6 +246,7 @@ class Player extends Component {
 
             <div className="card-footer-item">
               <input
+                className={style.inputRange}
                 type="range"
                 step="1"
                 min="0"

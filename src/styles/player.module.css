@@ -14,3 +14,6 @@
 .cloudPlayer {
   opacity: 0.03;
 }
+.inputRange {
+  width: 100%;
+}
