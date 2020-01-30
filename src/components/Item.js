@@ -53,9 +53,14 @@ class Item extends Component {
       <PlayButton playItem={this.playItem} />
     );
 
+    let boxClass = "box";
+    if (this.props.item.id.videoId === this.props.playingNow) {
+      boxClass = `box ${style.active}`;
+    }
+
     return (
       <div className={style.item}>
-        <div className="box">
+        <div className={boxClass}>
           <article className="media">
             <div className="media-left">
               <figure className="image is-64x64">

@@ -6,3 +6,6 @@
   margin: 10px;
   padding: 5px;
 }
+.active {
+  background-color: #ccc !important;
+}
