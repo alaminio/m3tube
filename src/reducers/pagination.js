@@ -1,11 +1,11 @@
-import { CHANGE_PAGINATION } from "../config/constants";
+import { CHANGE_PAGINATION } from "../actions/actionTypes";
 
 const initialState = {
   prevPageToken: null,
   nextPageToken: null
 };
 
-const paginationReducers = (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CHANGE_PAGINATION: {
       return payload;
@@ -15,5 +15,3 @@ const paginationReducers = (state = initialState, { type, payload }) => {
     }
   }
 };
-
-export default paginationReducers;

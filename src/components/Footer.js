@@ -1,22 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <div className="Footer" id="Footer">
-        <footer className="footer">
-          <div className="container">
-            <div className="columns">
-              <div className="column">
-                Made with <i className="fas fa-heart"></i> by MD AL AMIN
-              </div>
-              <div className="column">
-                <p className="is-pulled-right">Powerd by youtube API v3</p>
-              </div>
-            </div>
-          </div>
-        </footer>
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="content has-text-centered">
+        <p>
+          <strong>m3tube</strong> developed by{" "}
+          <a href="https://github.com/m3alamin/">m3alamin</a>. Powered By{" "}
+          <a
+            href="https://developers.google.com/youtube/v3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            youtube data api v3
+          </a>
+          .
+        </p>
       </div>
-    );
-  }
+    </footer>
+  );
 }
+
+export default Footer;

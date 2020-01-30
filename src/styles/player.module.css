@@ -1,0 +1,16 @@
+.playerMargin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.emptySpace {
+  min-height: 20px;
+}
+.cloudPlayer {
+  opacity: 0.03;
+}

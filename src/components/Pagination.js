@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { searchYoutube } from "../actions/searchAction";
+import { searchYoutube } from "../actions/search";
 
 class PrevPage extends Component {
   render() {
@@ -26,24 +26,24 @@ class Pagination extends Component {
   changeToNextPage = event => {
     event.preventDefault();
     this.props.searchYoutube(
-      this.props.query,
+      this.props.keyword,
       this.props.pagination.nextPageToken
     );
   };
   changeToPrevPage = event => {
     event.preventDefault();
     this.props.searchYoutube(
-      this.props.query,
+      this.props.keyword,
       this.props.pagination.prevPageToken
     );
   };
 
   render() {
-    let prevPage = "";
+    let prevPage = <div>&nbsp;</div>;
     if (this.props.pagination.prevPageToken) {
       prevPage = <PrevPage onClick={this.changeToPrevPage} />;
     }
-    let nextPage = "";
+    let nextPage = <div>&nbsp;</div>;
     if (this.props.pagination.nextPageToken) {
       nextPage = <NextPage onClick={this.changeToNextPage} />;
     }
@@ -59,14 +59,14 @@ class Pagination extends Component {
 const mapStateToProps = state => {
   return {
     pagination: state.pagination,
-    query: state.query
+    keyword: state.keyword
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchYoutube: (query, pageToken) =>
-      dispatch(searchYoutube(query, pageToken))
+    searchYoutube: (keyword, pageToken) =>
+      dispatch(searchYoutube(keyword, pageToken))
   };
 };
 

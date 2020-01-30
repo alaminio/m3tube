@@ -1,0 +1,25 @@
+{
+  "short_name": "m3tube",
+  "name": "YouTube implemented for me using ReactJs, Redux, Redux-thunk and YouTube API v3",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo192.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

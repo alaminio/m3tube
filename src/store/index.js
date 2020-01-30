@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "./reducers";
+import reducers from "../reducers";
 
 const composeMiddleware = compose(
   applyMiddleware(thunk),
@@ -9,4 +9,4 @@ const composeMiddleware = compose(
     : f => f
 );
 
-export default createStore(rootReducer, composeMiddleware);
+export default createStore(reducers, composeMiddleware);

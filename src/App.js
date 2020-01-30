@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { BASENAME } from "./config/constants";
-import HomePage from "./components/page/HomePage";
-import ViewPage from "./components/page/ViewPage";
+import React from "react";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Player from "./components/Player";
+import Notification from "./components/alerts/Notification";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App" id="App">
-        <section className="section">
-          <Router basename={BASENAME}>
-            <Switch>
-              <Route path="/:videoID" component={ViewPage} />
-              <Route path="/" component={HomePage} />
-            </Switch>
-          </Router>
-        </section>
+function App() {
+  return (
+    <section className="section">
+      <div className="container">
+        <Header />
+        <Player />
+        <div className="page">
+          <Notification />
+          <Home />
+        </div>
+        <Footer />
       </div>
-    );
-  }
+    </section>
+  );
 }
 
 export default App;

@@ -1,13 +1,18 @@
 import { combineReducers } from "redux";
-import { queryReducers, searchReducers } from "./searchReducers";
-import { playReducers } from "./playReducers";
-import paginationReducers from "./paginationReducers";
-import { showError } from "./errorReducers";
+import { playingNow, player, playerStatus, isMuted, volume } from "./player";
+import keyword from "./keyword";
+import items from "./items";
+import pagination from "./pagination";
+import message from "./message";
 
 export default combineReducers({
-  query: queryReducers,
-  songs: searchReducers,
-  play: playReducers,
-  pagination: paginationReducers,
-  showError
+  keyword,
+  items,
+  pagination,
+  playingNow,
+  player,
+  playerStatus,
+  isMuted,
+  volume,
+  message
 });
