@@ -30,7 +30,7 @@ I use this script to listen music when I do not want other to know by looking at
 
 btw! I tried to use a lot of popular package like React Router Dom V4, Redux, Redux-thunk, MomentJS etc.
 
-If you want to run this script, just run `npm install` and rename `/src/config/constants.sample.js` file to `/src/config/constants.js` and update google api key. API key has to be YouTube data api v3 enabled.
+If you want to run this script, just run `npm install` and rename `/src/config/settings.sample.js` file to `/src/config/settings.js` and update google api key. API key has to be YouTube data api v3 enabled.
 
 ## Available Scripts
 
