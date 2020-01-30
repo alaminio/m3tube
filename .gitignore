@@ -4,6 +4,9 @@
 # config
 /src/config/settings.js
 
+# Firebase cache
+.firebase/
+
 # dependencies
 /node_modules
 /.pnp
