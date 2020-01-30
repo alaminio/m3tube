@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 import style from "../styles/items.module.css";
@@ -75,6 +76,11 @@ class Item extends Component {
               </div>
               <nav className="level is-mobile">
                 <div className="level-left">{playPauseBtn}</div>
+                <div className="level-right">
+                  <Link to={`/${this.props.item.id.videoId}`}>
+                    <i className="fas fa-eye"></i>
+                  </Link>
+                </div>
               </nav>
             </div>
           </article>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "../styles/header.module.css";
 import Search from "./Search";
 import logo from "../img/logo.png";
@@ -11,7 +12,9 @@ function Header() {
           <Search />
         </div>
         <div className={`level-item has-text-centered ${style.flex1}`}>
-          <img src={logo} alt="m3tube" className={style.headerLogo} />
+          <Link to="/">
+            <img src={logo} alt="m3tube" className={style.headerLogo} />
+          </Link>
         </div>
         <div className={`level-item has-text-centered ${style.flex1}`}>
           <a

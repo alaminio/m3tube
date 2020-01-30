@@ -51,6 +51,7 @@ class Player extends Component {
 
   onPlayerReady = event => {
     this.props.setPlayerObj(this.player);
+    setVolume(this.player, this.props.volume);
     if (this.props.playingNow) {
       loadVideoById(this.player, this.props.playingNow);
     }

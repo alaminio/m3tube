@@ -1,3 +1,7 @@
+# 2.1.0
+
+- [x] react-router-dom (Single page view added)
+
 # 2.0.0
 
 - [x] Bug fixes
