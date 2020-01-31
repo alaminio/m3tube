@@ -30,7 +30,7 @@ export const player = (state = null, { type, payload }) => {
   }
 };
 
-export const playerStatus = (state = -1, { type, payload }) => {
+export const playerStatus = (state = null, { type, payload }) => {
   switch (type) {
     case CHANGE_PLAYER_STATUS: {
       return payload;

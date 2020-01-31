@@ -30,7 +30,6 @@ class Item extends Component {
   playItem = e => {
     e.preventDefault();
     this.props.playItem(this.props.item.id.videoId);
-    this.props.changePlayerStatus(1);
     setVolume(this.props.player, this.props.volume);
   };
   pauseItem = e => {

@@ -5,7 +5,6 @@ import { playItem, changePlayerStatus } from "../actions/player";
 class Single extends Component {
   componentDidMount() {
     this.props.playItem(this.props.match.params.videoId);
-    this.props.changePlayerStatus(1);
   }
   render() {
     return (
