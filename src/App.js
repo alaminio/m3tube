@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Single from "./pages/Single";
+import HomePage from "./pages/homepage.component";
+import SinglePage from "./pages/singlepage.component";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Player from "./components/Player";
@@ -17,8 +17,8 @@ function App() {
           <div className="page">
             <Notification />
             <Switch>
-              <Route path="/:videoId" component={Single} />
-              <Route path="/" component={Home} />
+              <Route path="/:videoId" component={SinglePage} />
+              <Route path="/" component={HomePage} />
             </Switch>
           </div>
           <Footer />

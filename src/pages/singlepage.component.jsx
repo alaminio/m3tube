@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { playItem, changePlayerStatus } from "../actions/player";
 
-class Single extends Component {
+class SinglePage extends Component {
   componentDidMount() {
     this.props.playItem(this.props.match.params.videoId);
   }
   render() {
     return (
-      <div className="Single">
+      <div className="SinglePage">
         <div>Playing: {this.props.match.params.videoId}</div>
       </div>
     );
@@ -24,5 +24,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { playItem, changePlayerStatus })(
-  Single
+  SinglePage
 );
