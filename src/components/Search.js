@@ -31,26 +31,15 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="field has-addons">
-        <div className="control">
-          <input
-            className={`input ${style.searchInputStyle}`}
-            type="text"
-            placeholder="Find a video"
-            value={this.props.keyword}
-            onChange={this.updateSearchQuery}
-            onKeyDown={this.inputKeyDown}
-          />
-        </div>
-        <div className="control">
-          <a
-            href="/"
-            className={`button is-info ${style.searchButtonStyle}`}
-            onClick={this.submit}
-          >
-            Search
-          </a>
-        </div>
+      <div className="control">
+        <input
+          className={`input ${style.searchInputStyle}`}
+          type="search"
+          placeholder="Find a video"
+          value={this.props.keyword}
+          onChange={this.updateSearchQuery}
+          onKeyDown={this.inputKeyDown}
+        />
       </div>
     );
   }
