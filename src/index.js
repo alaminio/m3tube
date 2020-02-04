@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bulma/css/bulma.css";
 import "./styles/index.css";
-import store from "./store";
+import store from "./redux/store";
 
 // store.subscribe(() => {
 //   console.log("store", store.getState());

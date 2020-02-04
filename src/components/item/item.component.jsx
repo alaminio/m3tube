@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 import style from "./item.module.css";
-import { playItem, changePlayerStatus } from "../../actions/player";
+import { playItem, changePlayerStatus } from "../../redux/actions/player";
 import { pauseVideo, setVolume } from "../../helpers";
 
 const PlayButton = props => {

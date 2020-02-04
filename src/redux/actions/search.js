@@ -1,7 +1,7 @@
 import { UPDATE_SEARCH_QUERY } from "./actionTypes";
 import paginate from "./paginations";
 import { updateItems } from "./items";
-import youtube from "../config/youtube";
+import youtube from "../../config/youtube";
 import { hideNotification, showNotification } from "../actions/notifications";
 
 export const updateSearchQuery = keyword => {

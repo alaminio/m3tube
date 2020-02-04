@@ -1,7 +1,3 @@
-.items {
-  display: flex;
-  flex-wrap: wrap;
-}
 .item {
   margin: 10px;
   padding: 5px;

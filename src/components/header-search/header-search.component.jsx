@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateSearchQuery, searchYoutube } from "../../actions/search";
-import { showNotification } from "../../actions/notifications";
+import { updateSearchQuery, searchYoutube } from "../../redux/actions/search";
+import { showNotification } from "../../redux/actions/notifications";
 import style from "./header-search.module.css";
 
 class HeaderSearch extends Component {
@@ -31,15 +31,26 @@ class HeaderSearch extends Component {
 
   render() {
     return (
-      <div className="control">
-        <input
-          className={`input ${style.searchInputStyle}`}
-          type="search"
-          placeholder="Find a video"
-          value={this.props.keyword}
-          onChange={this.updateSearchQuery}
-          onKeyDown={this.inputKeyDown}
-        />
+      <div className="field has-addons">
+        <div className="control">
+          <input
+            className={`input ${style.searchInputStyle}`}
+            type="search"
+            placeholder="Find a video"
+            value={this.props.keyword}
+            onChange={this.updateSearchQuery}
+            onKeyDown={this.inputKeyDown}
+          />
+        </div>
+        <div className="control">
+          <a
+            href="/"
+            className={`button is-info ${style.searchButtonStyle}`}
+            onClick={this.submit}
+          >
+            <i className="fas fa-search"></i>
+          </a>
+        </div>
       </div>
     );
   }

@@ -7,7 +7,7 @@ import {
   playItem,
   changePlayerMuteStatus,
   changePlayerVolume
-} from "../../actions/player";
+} from "../../redux/actions/player";
 import {
   loadVideoById,
   pauseVideo,

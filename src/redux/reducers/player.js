@@ -6,7 +6,7 @@ import {
   CHANGE_PLAYER_VOLUME
 } from "../actions/actionTypes";
 
-import { INIT_VOLUME } from "../config/settings";
+import { INIT_VOLUME } from "../../config/settings";
 
 export const playingNow = (state = null, { type, payload }) => {
   switch (type) {
