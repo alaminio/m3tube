@@ -1,3 +1,7 @@
+# 3.0.0
+
+- [x] Completly redesigned structure
+
 # 2.1.0
 
 - [x] react-router-dom (Single page view added)
