@@ -5,9 +5,6 @@
 # 2.1.0
 
 - [x] react-router-dom (Single page view added)
-
-# 2.0.0
-
 - [x] Bug fixes
 - [x] Code structure upgrade and better code formatting
 - [x] Removed react-router-dom (Single page view removed)
