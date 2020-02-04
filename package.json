@@ -1,7 +1,7 @@
 {
   "name": "m3tube",
-  "version": "0.1.0",
-  "homepage": "https://m3tube.firebaseapp.com/",
+  "version": "3.0.1",
+  "homepage": "https://m3tube.web.app/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.css";
 import HeaderSearch from "../header-search/header-search.component";
-import logo from "../../img/logo.png";
+import logo from "./logo.png";
 
 function Header() {
   return (

@@ -30,7 +30,22 @@
   - [x] redux-thunk
   - [x] axios
 
-YouTube implemented for me using ReactJs, React Router Dom, Redux, Redux-thunk and YouTube API v3 [https://m3tube.firebaseapp.com/](https://m3tube.firebaseapp.com/).
+# Future goal
+
+- [x] Add react-router-dom to create single view or share url
+- [x] Display error notification
+- [x] Play/Pause button
+- [x] Volume controller
+- [x] Host on firebase
+- [] Add redux-persist
+- [] Related item section
+- [] Add item to favourite list
+- [] Firebase authentication to add comment
+- [] Better redux actions and reducers structure
+- [] Redesign current theme
+- [] Show description of current playing item
+
+YouTube implemented for me using ReactJs, React Router Dom, Redux, Redux-thunk and YouTube API v3.
 
 ![Screenshot](screenshot.png)
 
