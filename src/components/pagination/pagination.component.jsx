@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { searchYoutube } from "../actions/search";
+import { searchYoutube } from "../../actions/search";
 
 class PrevPage extends Component {
   render() {

@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "../styles/header.module.css";
-import Search from "./Search";
-import logo from "../img/logo.png";
+import style from "./header.module.css";
+import HeaderSearch from "../header-search/header-search.component";
+import logo from "../../img/logo.png";
 
 function Header() {
   return (
     <div className="Header">
       <nav className="level">
         <div className={`level-item has-text-centered ${style.flex1}`}>
-          <Search />
+          <HeaderSearch />
         </div>
         <div className={`level-item has-text-centered ${style.flex1}`}>
           <Link to="/">

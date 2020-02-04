@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Item from "./Item";
-import Pagination from "./Pagination";
-import style from "../styles/items.module.css";
+import Item from "../item/item.component";
+import Pagination from "../pagination/pagination.component";
+import style from "./items.module.css";
 
 class Items extends Component {
   render() {

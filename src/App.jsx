@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./pages/homepage.component";
-import SinglePage from "./pages/singlepage.component";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Player from "./components/Player";
-import Notification from "./components/alerts/Notification";
+import HomePage from "./pages/homepage/homepage.component";
+import SinglePage from "./pages/singlepage/singlepage.component";
+import Header from "./components/header/header.component";
+import Footer from "./components/footer/footer.component";
+import Player from "./components/player/player.component";
+import Alerts from "./components/alerts/alerts.component";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Header />
           <Player />
           <div className="page">
-            <Notification />
+            <Alerts />
             <Switch>
               <Route path="/:videoId" component={SinglePage} />
               <Route path="/" component={HomePage} />

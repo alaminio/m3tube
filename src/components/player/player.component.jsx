@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import style from "../styles/player.module.css";
+import style from "./player.module.css";
 import {
   setPlayerObj,
   changePlayerStatus,
   playItem,
   changePlayerMuteStatus,
   changePlayerVolume
-} from "../actions/player";
+} from "../../actions/player";
 import {
   loadVideoById,
   pauseVideo,
@@ -15,8 +15,8 @@ import {
   muteVideo,
   unMuteVideo,
   setVolume
-} from "../helpers";
-import "../styles/responsiveIframe.css";
+} from "../../helpers";
+import "./player.styles.css";
 
 class Player extends Component {
   state = { hidePlayer: false, clearView: false, playInBackGround: false };

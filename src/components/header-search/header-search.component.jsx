@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateSearchQuery, searchYoutube } from "../actions/search";
-import { showNotification } from "../actions/notifications";
-import style from "../styles/header.module.css";
+import { updateSearchQuery, searchYoutube } from "../../actions/search";
+import { showNotification } from "../../actions/notifications";
+import style from "./header-search.module.css";
 
-class Search extends Component {
+class HeaderSearch extends Component {
   updateSearchQuery = e => {
     this.props.updateSearchQuery(e.target.value);
   };
@@ -55,4 +55,4 @@ export default connect(mapStateToProps, {
   updateSearchQuery,
   searchYoutube,
   showNotification
-})(Search);
+})(HeaderSearch);

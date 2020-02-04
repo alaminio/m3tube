@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
-import style from "../styles/items.module.css";
-import { playItem, changePlayerStatus } from "../actions/player";
-import { pauseVideo, setVolume } from "../helpers";
+import style from "./item.module.css";
+import { playItem, changePlayerStatus } from "../../actions/player";
+import { pauseVideo, setVolume } from "../../helpers";
 
 const PlayButton = props => {
   return (

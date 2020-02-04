@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { playItem, changePlayerStatus } from "../actions/player";
+import { playItem, changePlayerStatus } from "../../actions/player";
 
 class SinglePage extends Component {
   componentDidMount() {

@@ -1,0 +1,15 @@
+.headerLogo {
+  height: 30px;
+}
+.flex1 {
+  flex: 1 !important;
+}
+.black {
+  color: #000;
+}
+.searchInputStyle {
+  text-transform: capitalize;
+}
+.searchButtonStyle {
+  text-transform: uppercase;
+}
