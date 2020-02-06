@@ -7,7 +7,7 @@ import Footer from "./components/footer/footer.component";
 import Player from "./components/player/player.component";
 import Alerts from "./components/alerts/alerts.component";
 
-function App() {
+export default function App() {
   return (
     <section className="section">
       <div className="container">
@@ -27,5 +27,3 @@ function App() {
     </section>
   );
 }
-
-export default App;

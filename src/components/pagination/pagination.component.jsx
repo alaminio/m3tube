@@ -2,24 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { searchYoutube } from "../../redux/actions/search";
 
-class PrevPage extends Component {
-  render() {
-    return (
-      <a href="/" className="pagination-previous" onClick={this.props.onClick}>
-        Previous
-      </a>
-    );
-  }
-}
-
-class NextPage extends Component {
-  render() {
-    return (
-      <a href="/" className="pagination-next" onClick={this.props.onClick}>
-        Next page
-      </a>
-    );
-  }
+function PaginationButton({ className, onClick, children }) {
+  return (
+    <a href="/" className={className} onClick={onClick}>
+      {children}
+    </a>
+  );
 }
 
 class Pagination extends Component {
@@ -41,11 +29,25 @@ class Pagination extends Component {
   render() {
     let prevPage = <div>&nbsp;</div>;
     if (this.props.pagination.prevPageToken) {
-      prevPage = <PrevPage onClick={this.changeToPrevPage} />;
+      prevPage = (
+        <PaginationButton
+          onClick={this.changeToPrevPage}
+          className="pagination-previous"
+        >
+          Previous Page
+        </PaginationButton>
+      );
     }
     let nextPage = <div>&nbsp;</div>;
     if (this.props.pagination.nextPageToken) {
-      nextPage = <NextPage onClick={this.changeToNextPage} />;
+      nextPage = (
+        <PaginationButton
+          onClick={this.changeToNextPage}
+          className="pagination-previous"
+        >
+          Next Page
+        </PaginationButton>
+      );
     }
     return (
       <nav className="pagination" role="navigation" aria-label="pagination">
