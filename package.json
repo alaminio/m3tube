@@ -1,6 +1,6 @@
 {
   "name": "m3tube",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "homepage": "https://m3tube.web.app/",
   "private": true,
   "dependencies": {

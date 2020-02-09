@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import style from "./item.module.css";
 import { playItem, changePlayerStatus } from "../../redux/actions/player";
-import { pauseVideo, setVolume } from "../../helpers";
+import { playVideo, pauseVideo, setVolume } from "../../helpers";
 
 const PlayButton = props => {
   return (
@@ -29,8 +29,12 @@ const PauseButton = props => {
 class Item extends Component {
   playItem = e => {
     e.preventDefault();
-    this.props.playItem(this.props.item.id.videoId);
-    setVolume(this.props.player, this.props.volume);
+    if (this.props.item.id.videoId === this.props.playingNow) {
+      playVideo(this.props.player);
+    } else {
+      this.props.playItem(this.props.item.id.videoId);
+      setVolume(this.props.player, this.props.volume);
+    }
   };
   pauseItem = e => {
     e.preventDefault();
