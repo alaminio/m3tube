@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import moment from "moment";
+
+import { fromNow } from "../../config/moment-bn";
 import style from "./item.module.css";
 import { playItem, changePlayerStatus } from "../../redux/actions/player";
 import { playVideo, pauseVideo, setVolume } from "../../helpers";
@@ -29,7 +30,7 @@ const PauseButton = props => {
 class Item extends Component {
   playItem = e => {
     e.preventDefault();
-    if (this.props.item.id.videoId === this.props.playingNow) {
+    if (this.selectedItem()) {
       playVideo(this.props.player);
     } else {
       this.props.playItem(this.props.item.id.videoId);
@@ -42,14 +43,14 @@ class Item extends Component {
   };
 
   isPlayingNow = () => {
-    return (
-      this.props.playerStatus === 1 &&
-      this.props.item.id.videoId === this.props.playingNow
-    );
+    return this.props.playerStatus === 1 && this.selectedItem();
+  };
+
+  selectedItem = () => {
+    return this.props.item.id.videoId === this.props.playingNow;
   };
 
   render() {
-    const createdAt = moment(this.props.item.snippet.publishedAt).fromNow();
     const playPauseBtn = this.isPlayingNow() ? (
       <PauseButton pauseItem={this.pauseItem} />
     ) : (
@@ -57,7 +58,7 @@ class Item extends Component {
     );
 
     let boxClass = "box";
-    if (this.props.item.id.videoId === this.props.playingNow) {
+    if (this.selectedItem()) {
       boxClass = `box ${style.active}`;
     }
 
@@ -76,11 +77,17 @@ class Item extends Component {
             <div className="media-content">
               <div className="content">
                 <p>
-                  <strong>{createdAt}</strong>&nbsp;
+                  <strong>
+                    {fromNow(this.props.item.snippet.publishedAt)}
+                  </strong>
+                  &nbsp;
                   <small>{this.props.item.snippet.channelTitle}</small>
                   <br />
                   {this.props.item.snippet.title}
                 </p>
+                {this.selectedItem() && (
+                  <p>{this.props.item.snippet.description}</p>
+                )}
               </div>
               <nav className="level is-mobile">
                 <div className="level-left">{playPauseBtn}</div>
