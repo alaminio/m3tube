@@ -7,92 +7,95 @@ import style from "./item.module.css";
 import { playItem, changePlayerStatus } from "../../redux/actions/player";
 import { playVideo, pauseVideo, setVolume } from "../../helpers";
 
-const PlayButton = props => {
-  return (
-    <a href="/" className="level-item" onClick={props.playItem}>
-      <span className="icon is-small">
-        <i className="fas fa-play" aria-hidden="true"></i>
-      </span>
-    </a>
-  );
-};
+const LevelItem = ({ children, onClickHandle }) => (
+  <a href="/" className="level-item" onClick={onClickHandle}>
+    <span className="icon is-small">{children}</span>
+  </a>
+);
 
-const PauseButton = props => {
-  return (
-    <a href="/" className="level-item" onClick={props.pauseItem}>
-      <span className="icon is-small">
-        <i className="fas fa-pause" aria-hidden="true"></i>
-      </span>
-    </a>
-  );
-};
+const PlayButton = ({ onClickHandle }) => (
+  <LevelItem onClickHandle={onClickHandle}>
+    <i className="fas fa-play" aria-hidden="true"></i>
+  </LevelItem>
+);
+
+const PauseButton = ({ onClickHandle }) => (
+  <LevelItem onClickHandle={onClickHandle}>
+    <i className="fas fa-pause" aria-hidden="true"></i>
+  </LevelItem>
+);
 
 class Item extends Component {
   playItem = e => {
     e.preventDefault();
+
+    const { player, volume, item, playItem } = this.props;
+
     if (this.selectedItem()) {
-      playVideo(this.props.player);
+      playVideo(player);
     } else {
-      this.props.playItem(this.props.item.id.videoId);
-      setVolume(this.props.player, this.props.volume);
+      playItem(item.id.videoId);
+      setVolume(player, volume);
     }
   };
+
   pauseItem = e => {
     e.preventDefault();
-    pauseVideo(this.props.player);
+    const { player } = this.props;
+    pauseVideo(player);
   };
 
   isPlayingNow = () => {
-    return this.props.playerStatus === 1 && this.selectedItem();
+    const { playerStatus } = this.props;
+    return playerStatus === 1 && this.selectedItem();
   };
 
   selectedItem = () => {
-    return this.props.item.id.videoId === this.props.playingNow;
+    const { playingNow, item } = this.props;
+    return item.id.videoId === playingNow;
   };
 
   render() {
-    const playPauseBtn = this.isPlayingNow() ? (
-      <PauseButton pauseItem={this.pauseItem} />
-    ) : (
-      <PlayButton playItem={this.playItem} />
-    );
+    const {
+      title,
+      publishedAt,
+      thumbnails,
+      channelTitle,
+      description
+    } = this.props.item.snippet;
 
-    let boxClass = "box";
-    if (this.selectedItem()) {
-      boxClass = `box ${style.active}`;
-    }
+    const { videoId } = this.props.item.id;
 
     return (
       <div className={style.item}>
-        <div className={boxClass}>
+        <div className={this.selectedItem() ? `box ${style.active}` : "box"}>
           <article className="media">
             <div className="media-left">
               <figure className="image is-64x64">
-                <img
-                  src={this.props.item.snippet.thumbnails.default.url}
-                  alt={this.props.item.snippet.title}
-                />
+                <img src={thumbnails.default.url} alt={title} />
               </figure>
             </div>
             <div className="media-content">
               <div className="content">
                 <p>
-                  <strong>
-                    {fromNow(this.props.item.snippet.publishedAt)}
-                  </strong>
+                  <strong>{fromNow(publishedAt)}</strong>
                   &nbsp;
-                  <small>{this.props.item.snippet.channelTitle}</small>
+                  <small>{channelTitle}</small>
                   <br />
-                  {this.props.item.snippet.title}
+                  {title}
                 </p>
-                {this.selectedItem() && (
-                  <p>{this.props.item.snippet.description}</p>
-                )}
+                {this.selectedItem() && <p>{description}</p>}
               </div>
               <nav className="level is-mobile">
-                <div className="level-left">{playPauseBtn}</div>
+                <div className="level-left">
+                  {this.isPlayingNow() ? (
+                    <PauseButton onClickHandle={this.pauseItem} />
+                  ) : (
+                    <PlayButton onClickHandle={this.playItem} />
+                  )}
+                </div>
                 <div className="level-right">
-                  <Link to={`/${this.props.item.id.videoId}`}>
+                  <Link to={`/${videoId}`}>
                     <i className="fas fa-eye"></i>
                   </Link>
                 </div>
