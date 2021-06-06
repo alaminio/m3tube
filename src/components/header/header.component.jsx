@@ -18,7 +18,7 @@ function Header() {
         </div>
         <div className={`level-item has-text-centered ${style.flex1}`}>
           <a
-            href="https://github.com/m3alamin/m3tube"
+            href="https://github.com/alaminio/m3tube"
             target="_blank"
             rel="noopener noreferrer"
           >

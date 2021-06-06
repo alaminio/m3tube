@@ -6,7 +6,7 @@ function Footer() {
       <div className="content has-text-centered">
         <p>
           <strong>m3tube</strong> developed by{" "}
-          <a href="https://github.com/m3alamin/">m3alamin</a>. Powered By{" "}
+          <a href="https://alamin.io/">md al amin</a>. Powered By{" "}
           <a
             href="https://developers.google.com/youtube/v3"
             target="_blank"

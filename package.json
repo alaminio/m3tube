@@ -1,6 +1,6 @@
 {
   "name": "m3tube",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "homepage": "https://m3tube.web.app/",
   "private": true,
   "dependencies": {
@@ -25,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "f-login": "firebase login"
   },
   "eslintConfig": {
     "extends": "react-app"
