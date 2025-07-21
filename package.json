@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^1.6.0",
     "bulma": "^0.8.2",
-    "firebase-tools": "^9.12.1",
+    "firebase-tools": "^14.11.0",
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
