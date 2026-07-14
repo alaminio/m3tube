@@ -1,9 +1,35 @@
 .headerLogo {
-  height: 30px;
+  height: 40px;
+  filter: drop-shadow(0 4px 12px rgba(255, 43, 90, 0.35));
+  transition: transform 180ms ease;
+}
+.headerLogo:hover {
+  transform: scale(1.05);
 }
 .flex1 {
   flex: 1 !important;
 }
-.black {
-  color: #000;
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e7e9ee !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 180ms ease, border-color 180ms ease,
+    transform 180ms ease;
+}
+.githubLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+.githubIcon {
+  color: #e7e9ee;
+  font-size: 1.1rem;
 }

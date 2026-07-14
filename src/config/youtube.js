@@ -9,7 +9,7 @@ instance.interceptors.request.use(config => {
   config.params = {
     part: "snippet",
     type: "video",
-    maxResults: 10,
+    maxResults: 12,
     key: YOUTUBE_API_KEY,
     ...config.params
   };

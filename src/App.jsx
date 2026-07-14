@@ -9,21 +9,19 @@ import Alerts from "./components/alerts/alerts.component";
 
 export default function App() {
   return (
-    <section className="section">
-      <div className="container">
-        <Router>
-          <Header />
-          <Player />
-          <div className="page">
-            <Alerts />
-            <Switch>
-              <Route path="/:videoId" component={SinglePage} />
-              <Route path="/" component={HomePage} />
-            </Switch>
-          </div>
-          <Footer />
-        </Router>
+    <Router>
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-40 pt-6 sm:px-6 lg:px-8">
+          <Alerts />
+          <Switch>
+            <Route path="/:videoId" component={SinglePage} />
+            <Route path="/" component={HomePage} />
+          </Switch>
+        </main>
+        <Player />
+        <Footer />
       </div>
-    </section>
+    </Router>
   );
 }

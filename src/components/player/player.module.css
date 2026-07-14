@@ -1,6 +1,6 @@
 .playerMargin {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 .center {
   text-align: center;
@@ -9,10 +9,11 @@
   display: none;
 }
 .emptySpace {
-  min-height: 20px;
+  min-height: 8px;
 }
 .cloudPlayer {
-  opacity: 0.03;
+  opacity: 0.04;
+  transition: opacity 300ms ease;
 }
 .inputRange {
   width: 100%;

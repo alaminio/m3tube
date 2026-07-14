@@ -2,24 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { searchYoutube } from "../../redux/actions/search";
 
-function PaginationButton({ className, onClick, children }) {
-  return (
-    <a href="/" className={className} onClick={onClick}>
-      {children}
-    </a>
-  );
-}
-
 class Pagination extends Component {
-  changeToNextPage = event => {
-    event.preventDefault();
+  toNext = e => {
+    e.preventDefault();
     this.props.searchYoutube(
       this.props.keyword,
       this.props.pagination.nextPageToken
     );
   };
-  changeToPrevPage = event => {
-    event.preventDefault();
+  toPrev = e => {
+    e.preventDefault();
     this.props.searchYoutube(
       this.props.keyword,
       this.props.pagination.prevPageToken
@@ -27,49 +19,48 @@ class Pagination extends Component {
   };
 
   render() {
-    let prevPage = <div>&nbsp;</div>;
-    if (this.props.pagination.prevPageToken) {
-      prevPage = (
-        <PaginationButton
-          onClick={this.changeToPrevPage}
-          className="pagination-previous"
-        >
-          Previous Page
-        </PaginationButton>
-      );
-    }
-    let nextPage = <div>&nbsp;</div>;
-    if (this.props.pagination.nextPageToken) {
-      nextPage = (
-        <PaginationButton
-          onClick={this.changeToNextPage}
-          className="pagination-next"
-        >
-          Next Page
-        </PaginationButton>
-      );
-    }
+    const { prevPageToken, nextPageToken } = this.props.pagination;
+    const visible = Boolean(prevPageToken || nextPageToken);
+
     return (
-      <nav className="pagination" role="navigation" aria-label="pagination">
-        {prevPage}
-        {nextPage}
+      <nav
+        className={
+          visible
+            ? "mt-8 flex items-center justify-center gap-3"
+            : "hidden"
+        }
+        role="navigation"
+        aria-label="pagination"
+      >
+        <button
+          onClick={this.toPrev}
+          disabled={!prevPageToken}
+          className="btn min-w-[8rem]"
+        >
+          <i className="fas fa-chevron-left text-xs" aria-hidden="true"></i>
+          <span>Previous</span>
+        </button>
+        <button
+          onClick={this.toNext}
+          disabled={!nextPageToken}
+          className="btn min-w-[8rem]"
+        >
+          <span>Next</span>
+          <i className="fas fa-chevron-right text-xs" aria-hidden="true"></i>
+        </button>
       </nav>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    pagination: state.pagination,
-    keyword: state.keyword
-  };
-};
+const mapStateToProps = state => ({
+  pagination: state.pagination,
+  keyword: state.keyword
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    searchYoutube: (keyword, pageToken) =>
-      dispatch(searchYoutube(keyword, pageToken))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  searchYoutube: (keyword, pageToken) =>
+    dispatch(searchYoutube(keyword, pageToken))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

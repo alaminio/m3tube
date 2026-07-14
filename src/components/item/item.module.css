@@ -1,7 +1,18 @@
 .item {
-  margin: 10px;
-  padding: 5px;
+  padding: 0;
 }
+
+.item .box {
+  height: 100%;
+}
+
 .active {
-  background-color: #ccc !important;
+  border-color: rgba(255, 43, 90, 0.4) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 43, 90, 0.08) 0%,
+    rgba(124, 92, 255, 0.06) 100%
+  ) !important;
+  box-shadow: 0 0 0 1px rgba(255, 43, 90, 0.2),
+    0 10px 30px rgba(255, 43, 90, 0.15) !important;
 }
