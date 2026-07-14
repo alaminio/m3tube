@@ -17,7 +17,9 @@ import {
   getCurrentTime,
   getDuration,
   seekTo,
-  formatTime
+  formatTime,
+  getVideoData,
+  youtubeThumb
 } from "../../helpers";
 import "./player.styles.css";
 
@@ -27,7 +29,10 @@ class Player extends Component {
     blurred: false,
     hidden: false,
     currentTime: 0,
-    duration: 0
+    duration: 0,
+    ytState: -1,
+    ytTitle: "",
+    ytAuthor: ""
   };
 
   componentDidMount = () => {
@@ -55,11 +60,21 @@ class Player extends Component {
     if (!this.player) return;
     const currentTime = getCurrentTime(this.player);
     const duration = getDuration(this.player);
+    const ytState =
+      typeof this.player.getPlayerState === "function"
+        ? this.player.getPlayerState()
+        : this.state.ytState;
+    const data = getVideoData(this.player) || {};
+    const ytTitle = data.title || "";
+    const ytAuthor = data.author || "";
     if (
       currentTime !== this.state.currentTime ||
-      duration !== this.state.duration
+      duration !== this.state.duration ||
+      ytState !== this.state.ytState ||
+      ytTitle !== this.state.ytTitle ||
+      ytAuthor !== this.state.ytAuthor
     ) {
-      this.setState({ currentTime, duration });
+      this.setState({ currentTime, duration, ytState, ytTitle, ytAuthor });
     }
   };
 
@@ -88,20 +103,11 @@ class Player extends Component {
   };
 
   onPlayerStateChange = event => {
+    this.setState({ ytState: event.data });
     this.props.changePlayerStatus(event.data);
   };
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps.playerStatus !== this.props.playerStatus &&
-      this.props.player
-    ) {
-      if (this.props.playerStatus === 2) {
-        pauseVideo(this.props.player);
-      } else {
-        playVideo(this.props.player);
-      }
-    }
     if (prevProps.playingNow !== this.props.playingNow) {
       loadVideoById(this.player, this.props.playingNow);
     }
@@ -135,10 +141,14 @@ class Player extends Component {
 
   togglePlay = e => {
     e.preventDefault();
-    if (this.props.playerStatus === 1) {
+    const isPlaying = this.state.ytState === 1;
+    if (isPlaying) {
       pauseVideo(this.props.player);
+      this.setState({ ytState: 2 });
+      this.props.changePlayerStatus(2);
     } else {
-      this.props.playItem(this.props.playingNow);
+      playVideo(this.props.player);
+      this.setState({ ytState: 1 });
       this.props.changePlayerStatus(1);
     }
   };
@@ -182,21 +192,32 @@ class Player extends Component {
   };
 
   render() {
-    const { items, playingNow, playerStatus, isMuted, volume } = this.props;
+    const { items, playingNow, isMuted, volume } = this.props;
     const active = Boolean(playingNow);
-    const playing = playerStatus === 1;
-    const { expanded, blurred, hidden, currentTime, duration } = this.state;
+    const {
+      expanded,
+      blurred,
+      hidden,
+      currentTime,
+      duration,
+      ytState,
+      ytTitle,
+      ytAuthor
+    } = this.state;
+    const playing = ytState === 1;
 
     const currentItem =
       (items || []).find(it => it.id.videoId === playingNow) || null;
-    const title = currentItem ? currentItem.snippet.title : "Nothing playing";
-    const channel = currentItem ? currentItem.snippet.channelTitle : "";
+    const title = currentItem
+      ? currentItem.snippet.title
+      : ytTitle || (active ? "Loading…" : "Nothing playing");
+    const channel = currentItem ? currentItem.snippet.channelTitle : ytAuthor;
     const thumb = currentItem
       ? (
           currentItem.snippet.thumbnails.medium ||
           currentItem.snippet.thumbnails.default
         ).url
-      : null;
+      : youtubeThumb(playingNow);
 
     const idx = this.getCurrentIndex();
     const canPrev = idx > 0;
