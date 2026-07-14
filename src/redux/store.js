@@ -1,13 +1,21 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import reducers from "./reducers";
 
-const composeMiddleware = compose(
-  applyMiddleware(thunk, logger),
-  window.__REDUX_DEVTOOLS_EXTENSION__
-    ? window.__REDUX_DEVTOOLS_EXTENSION__()
-    : f => f
-);
+const middlewares = [thunk];
 
-export default createStore(reducers, composeMiddleware);
+if (process.env.NODE_ENV !== "production") {
+  // eslint-disable-next-line global-require
+  const { createLogger } = require("redux-logger");
+  middlewares.push(createLogger({ collapsed: true }));
+}
+
+const composeEnhancers =
+  (typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+
+export default createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(...middlewares))
+);

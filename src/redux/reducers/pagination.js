@@ -5,7 +5,7 @@ const initialState = {
   nextPageToken: null
 };
 
-export default (state = initialState, { type, payload }) => {
+const pagination = (state = initialState, { type, payload }) => {
   switch (type) {
     case CHANGE_PAGINATION: {
       return payload;
@@ -15,3 +15,5 @@ export default (state = initialState, { type, payload }) => {
     }
   }
 };
+
+export default pagination;

@@ -9,8 +9,8 @@ class Items extends Component {
     return (
       <div id="Items">
         <div className={style.items}>
-          {this.props.items.map((item, index) => (
-            <Item item={item} key={index} />
+          {this.props.items.map(item => (
+            <Item item={item} key={item.id.videoId} />
           ))}
         </div>
         <Pagination />
@@ -20,8 +20,8 @@ class Items extends Component {
   }
 }
 
-const mapSteteToProps = state => {
+const mapStateToProps = state => {
   return { items: state.items };
 };
 
-export default connect(mapSteteToProps)(Items);
+export default connect(mapStateToProps)(Items);

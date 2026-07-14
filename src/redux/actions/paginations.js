@@ -1,5 +1,8 @@
 import { CHANGE_PAGINATION } from "./actionTypes";
 
-export default pagination => {
-  return { type: CHANGE_PAGINATION, payload: pagination };
-};
+const paginate = pagination => ({
+  type: CHANGE_PAGINATION,
+  payload: pagination
+});
+
+export default paginate;

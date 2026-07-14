@@ -43,7 +43,7 @@ class Pagination extends Component {
       nextPage = (
         <PaginationButton
           onClick={this.changeToNextPage}
-          className="pagination-previous"
+          className="pagination-next"
         >
           Next Page
         </PaginationButton>

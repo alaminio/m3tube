@@ -11,9 +11,17 @@ export const updateSearchQuery = keyword => {
   };
 };
 
+const extractErrorMessage = error => {
+  const data = error && error.response && error.response.data;
+  if (data && data.error && data.error.message) return data.error.message;
+  if (typeof data === "string") return data;
+  if (error && error.message) return error.message;
+  return "Something went wrong";
+};
+
 export const searchYoutube = (keyword, pageToken = null) => {
   return dispatch => {
-    let searchParams = { params: { q: keyword } };
+    const searchParams = { params: { q: keyword } };
     if (pageToken) {
       searchParams.params.pageToken = pageToken;
     }
@@ -21,37 +29,21 @@ export const searchYoutube = (keyword, pageToken = null) => {
       .get("/search", searchParams)
       .then(response => {
         dispatch(updateItems(response.data.items));
-
-        let pagination = {
-          prevPageToken: null,
-          nextPageToken: null
-        };
-        if (response.data.prevPageToken) {
-          pagination.prevPageToken = response.data.prevPageToken;
-        }
-        if (response.data.nextPageToken) {
-          pagination.nextPageToken = response.data.nextPageToken;
-        }
-        dispatch(paginate(pagination));
+        dispatch(
+          paginate({
+            prevPageToken: response.data.prevPageToken || null,
+            nextPageToken: response.data.nextPageToken || null
+          })
+        );
         dispatch(hideNotification());
       })
       .catch(error => {
-        let errorMessage = {
-          type: "danger",
-          message: "Something went wrong"
-        };
-        if (error.response.data.error && error.response.data.error.message) {
-          errorMessage.message = error.response.data.error.message;
-        } else if (error.response.data) {
-          errorMessage.message = error.response.data;
-        }
-
-        // dispatch({
-        //   type: SHOW_MESSAGE,
-        //   payload: errorMessage
-        // });
-
-        dispatch(showNotification(errorMessage));
+        dispatch(
+          showNotification({
+            type: "danger",
+            message: extractErrorMessage(error)
+          })
+        );
       });
   };
 };

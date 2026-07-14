@@ -1,6 +1,6 @@
 import { UPDATE_ITEMS } from "../actions/actionTypes";
 
-export default (state = [], { type, payload }) => {
+const items = (state = [], { type, payload }) => {
   switch (type) {
     case UPDATE_ITEMS: {
       return payload;
@@ -10,3 +10,5 @@ export default (state = [], { type, payload }) => {
     }
   }
 };
+
+export default items;

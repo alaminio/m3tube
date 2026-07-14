@@ -1,7 +1,10 @@
 import { SHOW_MESSAGE, HIDE_MESSAGE } from "../actions/actionTypes";
 import { INITIAL_NOTIFICATION_MESSAGE } from "../../config/settings";
 
-export default (state = INITIAL_NOTIFICATION_MESSAGE, { type, payload }) => {
+const message = (
+  state = INITIAL_NOTIFICATION_MESSAGE,
+  { type, payload }
+) => {
   switch (type) {
     case SHOW_MESSAGE: {
       return payload;
@@ -14,3 +17,5 @@ export default (state = INITIAL_NOTIFICATION_MESSAGE, { type, payload }) => {
     }
   }
 };
+
+export default message;

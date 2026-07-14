@@ -22,7 +22,7 @@ class HeaderSearch extends Component {
     if (this.props.keyword.length < 1) {
       this.props.showNotification({
         type: "warning",
-        message: "Please enter a keyord to search"
+        message: "Please enter a keyword to search"
       });
       return;
     }
