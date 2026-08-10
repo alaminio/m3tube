@@ -27,7 +27,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.20",
-    "firebase-tools": "^13.29.1",
+    "firebase-tools": "^15.24.0",
     "postcss": "^8.4.49",
     "react-scripts": "5.0.1",
     "redux-logger": "^3.0.6",
